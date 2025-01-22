@@ -10,7 +10,7 @@ import axiosInstance from '../axiosInterceptor';
     const[cardData,setData]=useState([])
   const navigate=useNavigate();
     useEffect(()=>{
-      axiosInstance.get('http://localhost:3000/blogs').then((res)=>{
+      axiosInstance.get('/api/blogs').then((res)=>{
         setData(res.data)
       }).catch((err)=>{
         console.log(err)
@@ -24,7 +24,7 @@ import axiosInstance from '../axiosInterceptor';
     }
 
     function delete_data(val){
-      axiosInstance.delete('http://localhost:3000/blogs/delete/'+val._id).then((res)=>{
+      axiosInstance.delete('/api/blogs/delete/'+val._id).then((res)=>{
         alert(res.data);
         setData(cardData.filter(row => row._id !== val._id));
         }).catch((err)=>{
